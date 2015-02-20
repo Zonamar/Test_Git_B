@@ -5,16 +5,16 @@ using namespace std;
 void main()
 {
 
-	cout << " Hello Git World" << endl;
+	cout << "Hello Git World" << endl;
 
-	cout << " And it finally works!" << endl;
+	cout << "And it finally works!" << endl;
 
-	cout << " Hi noah" << endl;
+	cout << "Hi noah" << endl;
        
-       char * myStr;
+    char * myStr = new char ;
 
-       cin >> myStr;
+    cin >> myStr;
       
-      cout << myStr<<endl;
+    cout << myStr<<endl;
 
 }
