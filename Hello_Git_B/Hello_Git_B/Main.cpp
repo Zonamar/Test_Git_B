@@ -5,6 +5,9 @@ using namespace std;
 void main()
 {
 
-	cout << " Hello Git World _ new" << endl;
+	cout << " Hello Git World" << endl;
+
+	cout << " And it finally works!" << endl;
+
 
 }
