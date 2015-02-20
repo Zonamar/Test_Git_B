@@ -10,6 +10,11 @@ void main()
 	cout << " And it finally works!" << endl;
 
 	cout << " Hi noah" << endl;
+       
+       char * myStr;
 
+       cin >> myStr;
+      
+      cout << myStr<<endl;
 
 }
