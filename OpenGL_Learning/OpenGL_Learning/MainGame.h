@@ -30,9 +30,12 @@ private:
 	int _screenHeight;
 	GameState _gameState;
 
-	void processInput();
-	void gameLoop();
+	
 
 	void initSystems();
+	void processInput();
+	void gameLoop();
+	void drawGame();
+
 };
 
