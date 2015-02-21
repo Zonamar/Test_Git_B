@@ -1,14 +1,18 @@
-#include<SDL/SDL.h>
-#include<GL/glew.h>
-#include<Windows.h>
 
-
+#include"MainGame.h"
+#include<iostream>
 
 
 int main(int argc, char ** argv)
 {
-	SDL_Init(SDL_INIT_EVERYTHING);
+	MainGame myGame;
 
+	myGame.run();
+
+
+	std::cout << "Enter any key to quit..." << std::endl;
+	int a;
+	std::cin >> a;
 
 	return 0;
 
