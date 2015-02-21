@@ -69,12 +69,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="glslProgram.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainGame.cpp" />
+    <ClCompile Include="MyError.cpp" />
     <ClCompile Include="sprite.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="glslProgram.h" />
     <ClInclude Include="MainGame.h" />
+    <ClInclude Include="MyError.h" />
     <ClInclude Include="sprite.h" />
   </ItemGroup>
   <ItemGroup>
