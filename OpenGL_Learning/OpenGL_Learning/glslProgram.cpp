@@ -90,10 +90,10 @@ void glslProgram::addAttribute(const std::string& attributeName)
 
 }
 
-GLuint glslProgram::getUniformLocation(const std::string uniformname)
+GLint glslProgram::getUniformLocation(const std::string uniformname)
 {
 	
-	GLuint location = 	glGetUniformLocation(_programID, uniformname.c_str());
+	GLint location = 	glGetUniformLocation(_programID, uniformname.c_str());
 	
 	if (location == GL_INVALID_INDEX)
 	{

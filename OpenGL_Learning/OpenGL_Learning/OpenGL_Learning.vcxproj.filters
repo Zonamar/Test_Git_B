@@ -30,6 +30,9 @@
     <ClCompile Include="MyError.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="IOmanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainGame.h">
@@ -45,6 +48,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="myVertex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IOmanager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

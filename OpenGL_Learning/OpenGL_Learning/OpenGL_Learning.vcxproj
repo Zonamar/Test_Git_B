@@ -70,6 +70,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="glslProgram.cpp" />
+    <ClCompile Include="IOmanager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="MyError.cpp" />
@@ -77,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="glslProgram.h" />
+    <ClInclude Include="IOmanager.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="MyError.h" />
     <ClInclude Include="myVertex.h" />

@@ -120,7 +120,7 @@ void MainGame::drawGame()
 
 	_colorProgram.use();
 
-	GLuint timeLocation = _colorProgram.getUniformLocation("time");
+	GLint timeLocation = _colorProgram.getUniformLocation("time");
 
 	glUniform1f(timeLocation, _time);
 
