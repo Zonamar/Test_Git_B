@@ -8,7 +8,7 @@ bool IOmanager::readFileToBuffer(std::string filePath, std::vector<char> &buffer
 
 	if (file.fail())
 	{
-		perror(filePath.c_str);
+		perror(filePath.c_str());
 		return false;
 	}
 
