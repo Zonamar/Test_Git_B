@@ -36,6 +36,8 @@ private:
 
 	glslProgram _colorProgram;
 
+	float _time;
+
 
 	void initSystems();
 	void processInput();

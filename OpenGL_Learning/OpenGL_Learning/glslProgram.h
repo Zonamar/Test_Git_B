@@ -19,6 +19,8 @@ public:
 
 	void unUse();
 
+	GLuint getUniformLocation(const std::string uniformname);
+
 
 
 private:

@@ -5,12 +5,9 @@
 #include "MyError.h"
 
 
-MainGame::MainGame()
+MainGame::MainGame() : _window(nullptr), _screenHeight(768), _screenWidth(1024), _gameState(GameState::PLAY), _time(0)
 {
-	_window = nullptr;
-	_screenHeight = 768;
-	_screenWidth  = 1024;
-	_gameState = GameState::PLAY;
+
 
 
 	
@@ -25,6 +22,7 @@ void MainGame::run()
 {
 	initSystems();
 	_sprite.init(-1.0f, -1.0f, 2.0f, 2.0f);
+	
 
 	gameLoop();
 
@@ -105,6 +103,7 @@ void MainGame::gameLoop()
 	while (_gameState != GameState::EXIT)
 	{
 		processInput();
+		_time += 0.0025;
 		drawGame();
 	}
 
@@ -112,11 +111,18 @@ void MainGame::gameLoop()
 
 void MainGame::drawGame()
 {
+	
+	
+	
 	glClearDepth(1.0);
 	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 	
 
 	_colorProgram.use();
+
+	GLuint timeLocation = _colorProgram.getUniformLocation("time");
+
+	glUniform1f(timeLocation, _time);
 
 
 	_sprite.draw();
