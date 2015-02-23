@@ -1,4 +1,6 @@
 #include "sprite.h"
+#include "myVertex.h"	
+#include <cstddef>
 
 
 Sprite::Sprite()
@@ -30,31 +32,48 @@ void Sprite::init(float x, float y, float width, float height)
 		glGenBuffers(1, &_vboID);
 	}
 
-	float vertexData[12];
+	Vertex vertexData[6];
 
-	vertexData[0] = x + width;				//
-	vertexData[1] = y + height;				//
-											//
-											//	
-	vertexData[2] = x ;						//			Triangle 1
-	vertexData[3] = y + height;				//
-										    //
-											//
-	vertexData[4] = x;						//
-	vertexData[5] = y;						//
+	vertexData[0].position.x = x + width;				//
+	vertexData[0].position.y = y + height;				//
+														//
+														//	
+	vertexData[1].position.x = x ;						//			Triangle 1
+	vertexData[1].position.y = y + height;				//
+														//
+														//
+	vertexData[2].position.x = x;						//
+	vertexData[2].position.y = y;						//
 
 
 
-	vertexData[6] = x;						//
-	vertexData[7] = y;						//
-											//
-											//	
-	vertexData[8] = x + width;				//			Triangle 2
-	vertexData[9] = y;						//
-										    //
-											//
-	vertexData[10] = x+width;				//
-	vertexData[11] = y+height;				//
+	vertexData[3].position.x = x;						//
+	vertexData[3].position.y = y;						//
+														//
+														//	
+	vertexData[4].position.x = x + width;				//			Triangle 2
+	vertexData[4].position.y = y;						//
+														//
+														//
+	vertexData[5].position.x = x+width;					//
+	vertexData[5].position.y = y+height;				//
+
+	for (int i = 0; i < 6; i++)
+	{
+		vertexData[i].color.r = 255;
+		vertexData[i].color.g = 0;
+		vertexData[i].color.b = 255;
+		vertexData[i].color.a = 255;
+
+	}
+
+	vertexData[1].color.r = 0;
+
+	vertexData[4].color.g = 255;
+
+	vertexData[4].color.r = 0;
+	vertexData[4].color.b = 0;
+
 
 
 	glBindBuffer(GL_ARRAY_BUFFER, _vboID);
@@ -70,10 +89,12 @@ void Sprite::draw()
 	glBindBuffer(GL_ARRAY_BUFFER, _vboID);
 
 
-	glEnableVertexAttribArray(0);
+	glEnableVertexAttribArray(0);													// letting open GL know that we are going to use the first(0) attribute array
 	
 
-	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, 0);
+	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE,sizeof(Vertex),(void*)offsetof(Vertex,position));                          // vertexPosition Attribute Pointer
+
+	glVertexAttribPointer(1, 4, GL_UNSIGNED_BYTE, GL_TRUE, sizeof(Vertex), (void*)offsetof(Vertex, color));
 	
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 	

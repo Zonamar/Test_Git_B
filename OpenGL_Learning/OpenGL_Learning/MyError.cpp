@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <SDL/SDL.h>
+#include <cstdlib>
 
 
 void fatalError(std::string errorString)
@@ -11,6 +12,7 @@ void fatalError(std::string errorString)
 	int tmp;
 	std::cin >> tmp;
 	SDL_Quit();
+	exit(13);
 
 
 }

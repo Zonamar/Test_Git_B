@@ -44,6 +44,9 @@
     <ClInclude Include="MyError.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="myVertex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\colorShading.vert" />

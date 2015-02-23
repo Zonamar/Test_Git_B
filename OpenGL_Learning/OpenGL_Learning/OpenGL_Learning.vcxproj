@@ -79,6 +79,7 @@
     <ClInclude Include="glslProgram.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="MyError.h" />
+    <ClInclude Include="myVertex.h" />
     <ClInclude Include="sprite.h" />
   </ItemGroup>
   <ItemGroup>
