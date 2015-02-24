@@ -4,6 +4,7 @@
 #include <GL/glew.h>
 #include "sprite.h"
 #include "glslProgram.h"
+#include "glTexture.h"
 
 
 enum class GameState{
@@ -33,6 +34,9 @@ private:
 	GameState _gameState;
 
 	Sprite _sprite;
+
+	GLTexture _playerTexture;
+
 
 	glslProgram _colorProgram;
 

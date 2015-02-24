@@ -70,18 +70,23 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="glslProgram.cpp" />
+    <ClCompile Include="ImageLoader.cpp" />
     <ClCompile Include="IOmanager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="MyError.cpp" />
+    <ClCompile Include="picopng.cpp" />
     <ClCompile Include="sprite.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="glslProgram.h" />
+    <ClInclude Include="glTexture.h" />
+    <ClInclude Include="ImageLoader.h" />
     <ClInclude Include="IOmanager.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="MyError.h" />
     <ClInclude Include="myVertex.h" />
+    <ClInclude Include="picopng.h" />
     <ClInclude Include="sprite.h" />
   </ItemGroup>
   <ItemGroup>

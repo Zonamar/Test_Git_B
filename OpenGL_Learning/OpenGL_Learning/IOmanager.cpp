@@ -2,7 +2,7 @@
 #include <fstream>
 
 
-bool IOmanager::readFileToBuffer(std::string filePath, std::vector<char> &buffer)
+bool IOmanager::readFileToBuffer(std::string filePath, std::vector<unsigned char> &buffer)
 {
 	std::ifstream file(filePath, std::ios::binary);
 
@@ -26,7 +26,7 @@ bool IOmanager::readFileToBuffer(std::string filePath, std::vector<char> &buffer
 
 	buffer.resize(fileSize);
 
-	file.read(&(buffer[0]),fileSize);
+	file.read((char*)&(buffer[0]),fileSize);
 
 	file.close();
 	
