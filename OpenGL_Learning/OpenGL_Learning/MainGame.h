@@ -38,19 +38,25 @@ private:
 	
 	std::vector<Sprite*> _sprites;
 
+
 	
 
 
 	glslProgram _colorProgram;
 
 	float _time;
-
+	float _fps;
+	float _frameTime;
+	float _maxFps;
 
 	void initSystems();
 	void processInput();
 	void gameLoop();
 	void drawGame();
 	void initShaders();
+	void calculatetFPS();
+
+
 
 
 };
