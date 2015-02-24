@@ -3,7 +3,8 @@
 
 #include <string>
 
+namespace Zongine{
 
-extern void fatalError(std::string errorString);
-
+	extern void fatalError(std::string errorString);
+}
 #endif

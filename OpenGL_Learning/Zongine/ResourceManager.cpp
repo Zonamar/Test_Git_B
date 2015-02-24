@@ -1,9 +1,11 @@
 #include "ResourceManager.h"
 
-TextureCashe ResourceManager::_textureCashe;
+namespace Zongine{
+	TextureCashe ResourceManager::_textureCashe;
 
-GLTexture ResourceManager::getTexture(std::string texturePath)
-{
-	return _textureCashe.getTexture(texturePath);
+	GLTexture ResourceManager::getTexture(std::string texturePath)
+	{
+		return _textureCashe.getTexture(texturePath);
 
+	}
 }

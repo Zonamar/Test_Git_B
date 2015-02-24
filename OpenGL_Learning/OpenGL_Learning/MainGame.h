@@ -2,9 +2,10 @@
 
 #include <SDL/SDL.h>
 #include <GL/glew.h>
-#include "sprite.h"
-#include "glslProgram.h"
-#include "glTexture.h"
+#include <Zongine/sprite.h>
+#include <Zongine/glslProgram.h>
+#include <Zongine/glTexture.h>
+#include <Zongine\Window.h>
 #include <vector>
 
 
@@ -29,20 +30,20 @@ public:
 
 private:
 
-	SDL_Window * _window;
+	Zongine::Window _window;
 	int _screenWidth;
 	int _screenHeight;
 	GameState _gameState;
 
-	Sprite _sprite;
+	Zongine::Sprite _sprite;
 	
-	std::vector<Sprite*> _sprites;
+	std::vector<Zongine::Sprite*> _sprites;
 
 
 	
 
 
-	glslProgram _colorProgram;
+	Zongine::glslProgram _colorProgram;
 
 	float _time;
 	float _fps;

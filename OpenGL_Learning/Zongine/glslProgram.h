@@ -2,39 +2,42 @@
 #include <GL/glew.h>
 #include <string>
 
-class glslProgram
-{
-public:
-	glslProgram();
-	~glslProgram();
+
+namespace Zongine{
+	class glslProgram
+	{
+	public:
+		glslProgram();
+		~glslProgram();
 
 
-	void compileShaders(const std::string& vertexShaderFilePath, const std::string& fragmentShaderFilePath);
+		void compileShaders(const std::string& vertexShaderFilePath, const std::string& fragmentShaderFilePath);
 
-	void linkShaders();
+		void linkShaders();
 
-	void addAttribute(const std::string& attributeName);
+		void addAttribute(const std::string& attributeName);
 
-	void use();
+		void use();
 
-	void unUse();
+		void unUse();
 
-	GLint getUniformLocation(const std::string uniformname);
-
-
-
-private:
-
-	int _numAttributes;
-
-	GLuint _programID;
-
-	GLuint _vertexShaderID;
-	
-	GLuint _fragmentShaderID;
+		GLint getUniformLocation(const std::string uniformname);
 
 
-	void compileShader(const std::string FilePath,GLuint shaderID);
 
-};
+	private:
 
+		int _numAttributes;
+
+		GLuint _programID;
+
+		GLuint _vertexShaderID;
+
+		GLuint _fragmentShaderID;
+
+
+		void compileShader(const std::string FilePath, GLuint shaderID);
+
+	};
+
+}

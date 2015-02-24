@@ -2,10 +2,11 @@
 
 #include <iostream>
 #include <string>
-#include "MyError.h"
+#include <Zongine/MyError.h>
+#include <Zongine\Zongine.h>
 
 
-MainGame::MainGame() : _window(nullptr), _screenHeight(768), _screenWidth(1024), _gameState(GameState::PLAY), _time(0), _maxFps(60.0f)
+MainGame::MainGame() : _screenHeight(768), _screenWidth(1024), _gameState(GameState::PLAY), _time(0), _maxFps(60.0f)
 {
 
 
@@ -22,13 +23,13 @@ void MainGame::run()
 {
 	initSystems();
 
-	_sprites.push_back(new Sprite()); 
+	_sprites.push_back(new Zongine::Sprite());
 	_sprites.back()->init(-1.0f, -1.0f, 1.0f, 1.0f, "Textures/JimmyJump/PNG/CharacterRight_Standing.png");
 
-	_sprites.push_back(new Sprite());
+	_sprites.push_back(new Zongine::Sprite());
 	_sprites.back()->init(0.0f, 0.0f, 1.0f, 1.0f, "Textures/JimmyJump/PNG/CharacterRight_Standing.png");
 
-	_sprites.push_back(new Sprite());
+	_sprites.push_back(new Zongine::Sprite());
 	_sprites.back()->init(-1.0f, 0.0f, 1.0f, 1.0f, "Textures/JimmyJump/PNG/CharacterRight_Standing.png");
 
 	
@@ -41,33 +42,10 @@ void MainGame::run()
 
 void MainGame::initSystems()
 {
-	SDL_Init(SDL_INIT_EVERYTHING);				// init SDL
-
-	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-
-	_window = SDL_CreateWindow("myGameEng", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, _screenWidth, _screenHeight, SDL_WINDOW_OPENGL);
-
-	if (_window == nullptr){
-		fatalError("SDL Window could not be created!");
-	}
-	SDL_GLContext glContext = SDL_GL_CreateContext(_window);
-
-	if (glContext == nullptr){
-		fatalError("SDL_GL context could not be created!");
-	}
-
-	GLenum error = glewInit();
-	if (error != GLEW_OK)
-	{
-		fatalError("GLEW could not be init");
-	}
-
 	
-	printf("*** OpenGL Version %s  ***\n", glGetString(GL_VERSION));
 
-	glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
 
-	SDL_GL_SetSwapInterval(0);
+	_window.create("Game Engine", _screenWidth, _screenHeight, 0);
 
 
 	initShaders();
@@ -178,7 +156,7 @@ void MainGame::drawGame()
 	glBindTexture(GL_TEXTURE_2D, 0);
 
 
-	SDL_GL_SwapWindow(_window);
+	_window.swapBuffer();
 
 }
 

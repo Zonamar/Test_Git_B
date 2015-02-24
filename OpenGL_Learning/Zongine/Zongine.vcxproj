@@ -90,6 +90,8 @@
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="sprite.cpp" />
     <ClCompile Include="TextureCashe.cpp" />
+    <ClCompile Include="Window.cpp" />
+    <ClCompile Include="Zongine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="glslProgram.h" />
@@ -102,6 +104,8 @@
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="sprite.h" />
     <ClInclude Include="TextureCashe.h" />
+    <ClInclude Include="Window.h" />
+    <ClInclude Include="Zongine.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
