@@ -43,6 +43,7 @@ void MainGame::run()
 void MainGame::initSystems()
 {
 	
+	Zongine::init();
 
 
 	_window.create("Game Engine", _screenWidth, _screenHeight, 0);
