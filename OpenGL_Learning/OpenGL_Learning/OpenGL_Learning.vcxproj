@@ -76,7 +76,9 @@
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="MyError.cpp" />
     <ClCompile Include="picopng.cpp" />
+    <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="sprite.cpp" />
+    <ClCompile Include="TextureCashe.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="glslProgram.h" />
@@ -87,7 +89,9 @@
     <ClInclude Include="MyError.h" />
     <ClInclude Include="myVertex.h" />
     <ClInclude Include="picopng.h" />
+    <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="sprite.h" />
+    <ClInclude Include="TextureCashe.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\colorShading.frag" />
