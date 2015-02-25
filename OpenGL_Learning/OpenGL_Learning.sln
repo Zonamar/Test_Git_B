@@ -10,6 +10,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenGL_Learning", "OpenGL_L
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Zongine", "Zongine\Zongine.vcxproj", "{FA6AC2B1-2624-479C-AE69-EC33A5579B8B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Zombies", "Zombies\Zombies.vcxproj", "{479ED008-EC99-49D8-9C3C-BB6AC2119095}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FA6AC2B1-2624-479C-AE69-EC33A5579B8B} = {FA6AC2B1-2624-479C-AE69-EC33A5579B8B}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -24,6 +29,10 @@ Global
 		{FA6AC2B1-2624-479C-AE69-EC33A5579B8B}.Debug|Win32.Build.0 = Debug|Win32
 		{FA6AC2B1-2624-479C-AE69-EC33A5579B8B}.Release|Win32.ActiveCfg = Release|Win32
 		{FA6AC2B1-2624-479C-AE69-EC33A5579B8B}.Release|Win32.Build.0 = Release|Win32
+		{479ED008-EC99-49D8-9C3C-BB6AC2119095}.Debug|Win32.ActiveCfg = Debug|Win32
+		{479ED008-EC99-49D8-9C3C-BB6AC2119095}.Debug|Win32.Build.0 = Debug|Win32
+		{479ED008-EC99-49D8-9C3C-BB6AC2119095}.Release|Win32.ActiveCfg = Release|Win32
+		{479ED008-EC99-49D8-9C3C-BB6AC2119095}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
