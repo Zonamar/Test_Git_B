@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Zonegine{
+namespace Zongine{
 
 
 	class FpsLimiter

@@ -47,6 +47,9 @@ namespace Zongine{
 
 	glm::vec2 Camera2D::convertScreenToWorld(glm::vec2 screenCoords)
 	{
+		screenCoords.y = _screenHeight - screenCoords.y;
+
+
 		screenCoords -= glm::vec2(_screenWidth / 2, _screenHeight / 2);
 
 		screenCoords /= _scale;

@@ -1,7 +1,7 @@
 #include "Timing.h"
 #include <SDL\SDL.h>
 
-namespace Zonegine{
+namespace Zongine{
 
 
 

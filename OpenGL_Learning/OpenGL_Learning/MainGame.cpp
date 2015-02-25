@@ -42,7 +42,7 @@ void MainGame::initSystems()
 	Zongine::init();
 
 
-	_window.create("Game Engine", _screenWidth, _screenHeight, 0);
+	_window.create("Game Engine", _screenWidth, _screenHeight,0);
 
 
 	initShaders();
@@ -128,6 +128,16 @@ void MainGame::processInput()
 		glm::vec2 mouseCoords = _inputManager.getMouseCords();
 		mouseCoords = _camera.convertScreenToWorld(mouseCoords);
 
+		glm::vec2 playerPosition(0.0f);
+
+		glm::vec2 direction = mouseCoords - playerPosition;
+
+		direction = glm::normalize(direction);
+
+		_Bullets.emplace_back(playerPosition, direction, 8.0f, 1000);
+
+
+
 		std::cout << mouseCoords.x << "x  " << mouseCoords.y << "y " << std::endl;
 	}
 
@@ -142,6 +152,20 @@ void MainGame::gameLoop()
 		_time += 0.01f;
 
 		_camera.update();
+		
+		for (int i = 0; i < _Bullets.size(); )
+		{
+			if (_Bullets[i].update() == true)
+			{
+				_Bullets[i] = _Bullets.back();
+				_Bullets.pop_back();
+
+			}
+			else
+			{
+				i++;
+			}
+		}
 
 		drawGame();
 
@@ -200,7 +224,11 @@ void MainGame::drawGame()
 		_spriteBatch.draw(pos, uv, texture.id, 0.0f, color);
 	
 
-	
+		for (int i = 0; i < _Bullets.size(); i++)
+		{
+			_Bullets[i].draw(_spriteBatch);
+
+		}
 	_spriteBatch.end();
 
 	_spriteBatch.renderBatch();

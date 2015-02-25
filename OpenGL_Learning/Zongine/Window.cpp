@@ -32,7 +32,7 @@ namespace Zongine{
 		}
 		if (currentFlags & FULLSCREEN)
 		{
-			flags !=SDL_WINDOW_FULLSCREEN_DESKTOP;
+			flags !=SDL_WINDOW_FULLSCREEN;
 		}
 
 		_sdlWindow = SDL_CreateWindow(windowName.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, _screenWidth, _screenHeight, flags);

@@ -13,6 +13,8 @@
 #include <vector>
 #include <Zongine/InputManager.h>
 #include <Zongine/Timing.h>
+#include "Bullet.h"
+
 
 
 enum class GameState{
@@ -50,7 +52,10 @@ private:
 	Zongine::Camera2D _camera;
 
 	Zongine::InputManager _inputManager;
-	Zonegine::FpsLimiter _fpsLimiter;
+	Zongine::FpsLimiter _fpsLimiter;
+
+	std::vector<Bullet> _Bullets;
+
 
 
 	float _time;
