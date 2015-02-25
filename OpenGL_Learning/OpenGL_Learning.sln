@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenGL_Learning", "OpenGL_Learning\OpenGL_Learning.vcxproj", "{A908E954-52D0-4049-A453-5DB7327803EF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FA6AC2B1-2624-479C-AE69-EC33A5579B8B} = {FA6AC2B1-2624-479C-AE69-EC33A5579B8B}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Zongine", "Zongine\Zongine.vcxproj", "{FA6AC2B1-2624-479C-AE69-EC33A5579B8B}"
 EndProject

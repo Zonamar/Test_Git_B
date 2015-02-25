@@ -6,10 +6,12 @@
 #include <Zongine\Zongine.h>
 
 
+
 MainGame::MainGame() : _screenHeight(768), _screenWidth(1024), _gameState(GameState::PLAY), _time(0), _maxFps(60.0f)
 {
 
-
+	_camera.init(_screenWidth, _screenHeight);
+	
 
 	
 }
@@ -24,13 +26,13 @@ void MainGame::run()
 	initSystems();
 
 	_sprites.push_back(new Zongine::Sprite());
-	_sprites.back()->init(-1.0f, -1.0f, 1.0f, 1.0f, "Textures/JimmyJump/PNG/CharacterRight_Standing.png");
+	_sprites.back()->init(0.0f, 0.0f, _screenWidth / 6, _screenWidth / 6, "Textures/JimmyJump/PNG/CharacterRight_Standing.png");
+
+	//_sprites.push_back(new Zongine::Sprite());
+	//_sprites.back()->init(0.0f, _screenHeight / 2, _screenWidth / 4, _screenHeight / 4, "Textures/JimmyJump/PNG/CharacterRight_Standing.png");
 
 	_sprites.push_back(new Zongine::Sprite());
-	_sprites.back()->init(0.0f, 0.0f, 1.0f, 1.0f, "Textures/JimmyJump/PNG/CharacterRight_Standing.png");
-
-	_sprites.push_back(new Zongine::Sprite());
-	_sprites.back()->init(-1.0f, 0.0f, 1.0f, 1.0f, "Textures/JimmyJump/PNG/CharacterRight_Standing.png");
+	_sprites.back()->init(_screenWidth / 6, 0.0f, _screenWidth / 6, _screenWidth / 6, "Textures/JimmyJump/PNG/CharacterRight_Standing.png");
 
 	
 	//_playerTexture = ImageLoader::loadPNG("Textures/JimmyJump/PNG/CharacterRight_Standing.png");
@@ -43,6 +45,7 @@ void MainGame::run()
 void MainGame::initSystems()
 {
 	
+
 	Zongine::init();
 
 
@@ -64,7 +67,8 @@ void MainGame::initShaders()
 
 void MainGame::processInput()
 {
-
+	const float CAMERA_SPEED = 20;
+	const float SCALE_SPEED = 0.1f;
 	SDL_Event evnt;
 
 	while (SDL_PollEvent(&evnt))
@@ -74,10 +78,38 @@ void MainGame::processInput()
 		case SDL_QUIT:
 			_gameState = GameState::EXIT;
 			break;
-		
+		case SDL_KEYDOWN:
+			switch (evnt.key.keysym.sym)
+			{
+			case SDLK_w:
+				_camera.setPosition(_camera.getPosition() + glm::vec2(0.0f, CAMERA_SPEED));
+				std::cout << "W Pressed \n";
+				break;
+			case SDLK_s:
+				_camera.setPosition(_camera.getPosition() + glm::vec2(0.0f, -CAMERA_SPEED));
+				break;
+			case SDLK_a:
+				_camera.setPosition(_camera.getPosition() + glm::vec2(CAMERA_SPEED, 0.0f));
+				break;
+			case SDLK_d:
+				_camera.setPosition(_camera.getPosition() + glm::vec2(-CAMERA_SPEED, 0.0f));
+				break;
+			case SDLK_q:
+				_camera.setScale(_camera.getScale() + SCALE_SPEED);
+				break;
+			case SDLK_e:
+				_camera.setScale(_camera.getScale() - SCALE_SPEED);
+				break;
+			default:
+				break;
+
+			}
+						
+
+						
 		
 		case SDL_MOUSEMOTION:
-			std::cout << evnt.motion.x << "x   " << evnt.motion.y << "y  " << std::endl;
+			//std::cout << evnt.motion.x << "x   " << evnt.motion.y << "y  " << std::endl;
 
 
 			break;
@@ -101,6 +133,9 @@ void MainGame::gameLoop()
 		float startTick = SDL_GetTicks();
 		processInput();
 		_time += 0.01;
+
+		_camera.update();
+
 		drawGame();
 		calculatetFPS();
 
@@ -144,6 +179,12 @@ void MainGame::drawGame()
 	GLint timeLocation = _colorProgram.getUniformLocation("time");
 
 	glUniform1f(timeLocation, _time);
+	
+	GLint pLocation = _colorProgram.getUniformLocation("P");
+
+	glm::mat4 cameraMatrix = _camera.getCameraMatrix();
+
+	glUniformMatrix4fv(pLocation, 1, GL_FALSE, &(cameraMatrix[0][0]));
 
 
 	for (int i = 0; i < _sprites.size(); i++)
@@ -190,10 +231,10 @@ void MainGame::calculatetFPS()
 	{
 		count = currentFrame;
 	}
-else
-{
-	count = NUM_SAMPLES;
-}
+	else
+	{
+		count = NUM_SAMPLES;
+	}
 
 	for (int i = 0; i < count; i++)
 	{

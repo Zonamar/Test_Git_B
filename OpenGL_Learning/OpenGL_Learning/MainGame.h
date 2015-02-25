@@ -5,7 +5,8 @@
 #include <Zongine/sprite.h>
 #include <Zongine/glslProgram.h>
 #include <Zongine/glTexture.h>
-#include <Zongine\Window.h>
+#include <Zongine/Window.h>
+#include <Zongine/Camera2D.h>
 #include <vector>
 
 
@@ -44,6 +45,8 @@ private:
 
 
 	Zongine::glslProgram _colorProgram;
+	Zongine::Camera2D _camera;
+
 
 	float _time;
 	float _fps;
