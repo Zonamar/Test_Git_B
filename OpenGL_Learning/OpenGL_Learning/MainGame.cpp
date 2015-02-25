@@ -83,7 +83,14 @@ void MainGame::processInput()
 			_inputManager.releaseKey(evnt.key.keysym.sym);
 			break;
 		case SDL_MOUSEMOTION:
-			//std::cout << evnt.motion.x << "x   " << evnt.motion.y << "y  " << std::endl;
+			_inputManager.setMouseCords(evnt.motion.x, evnt.motion.y);
+
+			break;
+		case SDL_MOUSEBUTTONDOWN:
+			_inputManager.pressKey(evnt.button.button);
+			break;
+		case SDL_MOUSEBUTTONUP:
+			_inputManager.releaseKey(evnt.button.button);
 			break;
 		default:
 			break;
@@ -116,7 +123,13 @@ void MainGame::processInput()
 	{
 		_camera.setScale(_camera.getScale() - SCALE_SPEED);
 	}
+	if (_inputManager.isKeyPressed(SDL_BUTTON_LEFT))
+	{
+		glm::vec2 mouseCoords = _inputManager.getMouseCords();
+		mouseCoords = _camera.convertScreenToWorld(mouseCoords);
 
+		std::cout << mouseCoords.x << "x  " << mouseCoords.y << "y " << std::endl;
+	}
 
 }
 void MainGame::gameLoop()
@@ -138,7 +151,7 @@ void MainGame::gameLoop()
 
 		frameCounter++;
 
-		if (frameCounter == 10)
+		if (frameCounter == 10000)
 		{
 			std::cout << "fps:" << _fps << "\n";
 			frameCounter = 0;
@@ -185,7 +198,7 @@ void MainGame::drawGame()
 
 
 		_spriteBatch.draw(pos, uv, texture.id, 0.0f, color);
-		_spriteBatch.draw(pos + glm::vec4(100, 0, 0, 0), uv, texture.id, 0.0f, color);
+	
 
 	
 	_spriteBatch.end();
