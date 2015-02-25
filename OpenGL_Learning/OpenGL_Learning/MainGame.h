@@ -11,7 +11,8 @@
 #include <Zongine/SpriteBatch.h>
 #include <Zongine/Camera2D.h>
 #include <vector>
-
+#include <Zongine/InputManager.h>
+#include <Zongine/Timing.h>
 
 
 enum class GameState{
@@ -48,10 +49,13 @@ private:
 	Zongine::glslProgram _colorProgram;
 	Zongine::Camera2D _camera;
 
+	Zongine::InputManager _inputManager;
+	Zonegine::FpsLimiter _fpsLimiter;
+
 
 	float _time;
 	float _fps;
-	float _frameTime;
+	
 	float _maxFps;
 
 	void initSystems();
