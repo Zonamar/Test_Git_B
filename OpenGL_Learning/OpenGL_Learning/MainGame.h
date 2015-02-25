@@ -2,12 +2,16 @@
 
 #include <SDL/SDL.h>
 #include <GL/glew.h>
-#include <Zongine/sprite.h>
+
+#include <Zongine/Zongine.h>
 #include <Zongine/glslProgram.h>
 #include <Zongine/glTexture.h>
+#include <Zongine/sprite.h>
 #include <Zongine/Window.h>
+#include <Zongine/SpriteBatch.h>
 #include <Zongine/Camera2D.h>
 #include <vector>
+
 
 
 enum class GameState{
@@ -37,11 +41,8 @@ private:
 	GameState _gameState;
 
 	Zongine::Sprite _sprite;
-	
-	std::vector<Zongine::Sprite*> _sprites;
 
-
-	
+	Zongine::SpriteBatch _spriteBatch;
 
 
 	Zongine::glslProgram _colorProgram;

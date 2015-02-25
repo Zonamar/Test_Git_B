@@ -33,7 +33,7 @@ namespace Zongine{
 			return newTexture;
 		}
 
-		std::cout << "Got Texture" << std::endl;
+	//	std::cout << "Got Texture" << std::endl;
 		return mit->second;
 
 

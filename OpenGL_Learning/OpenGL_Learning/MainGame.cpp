@@ -3,7 +3,8 @@
 #include <iostream>
 #include <string>
 #include <Zongine/MyError.h>
-#include <Zongine\Zongine.h>
+#include <Zongine/ResourceManager.h>
+#include <Zongine/glTexture.h>
 
 
 
@@ -25,16 +26,7 @@ void MainGame::run()
 {
 	initSystems();
 
-	_sprites.push_back(new Zongine::Sprite());
-	_sprites.back()->init(0.0f, 0.0f, _screenWidth / 6, _screenWidth / 6, "Textures/JimmyJump/PNG/CharacterRight_Standing.png");
 
-	//_sprites.push_back(new Zongine::Sprite());
-	//_sprites.back()->init(0.0f, _screenHeight / 2, _screenWidth / 4, _screenHeight / 4, "Textures/JimmyJump/PNG/CharacterRight_Standing.png");
-
-	_sprites.push_back(new Zongine::Sprite());
-	_sprites.back()->init(_screenWidth / 6, 0.0f, _screenWidth / 6, _screenWidth / 6, "Textures/JimmyJump/PNG/CharacterRight_Standing.png");
-
-	
 	//_playerTexture = ImageLoader::loadPNG("Textures/JimmyJump/PNG/CharacterRight_Standing.png");
 
 	gameLoop();
@@ -45,6 +37,7 @@ void MainGame::run()
 void MainGame::initSystems()
 {
 	
+	
 
 	Zongine::init();
 
@@ -53,6 +46,9 @@ void MainGame::initSystems()
 
 
 	initShaders();
+
+	_spriteBatch.init();
+
 }
 
 void MainGame::initShaders()
@@ -83,7 +79,6 @@ void MainGame::processInput()
 			{
 			case SDLK_w:
 				_camera.setPosition(_camera.getPosition() + glm::vec2(0.0f, CAMERA_SPEED));
-				std::cout << "W Pressed \n";
 				break;
 			case SDLK_s:
 				_camera.setPosition(_camera.getPosition() + glm::vec2(0.0f, -CAMERA_SPEED));
@@ -132,7 +127,7 @@ void MainGame::gameLoop()
 	{
 		float startTick = SDL_GetTicks();
 		processInput();
-		_time += 0.01;
+		_time += 0.01f;
 
 		_camera.update();
 
@@ -186,12 +181,28 @@ void MainGame::drawGame()
 
 	glUniformMatrix4fv(pLocation, 1, GL_FALSE, &(cameraMatrix[0][0]));
 
+	_spriteBatch.begin();
+	
+	glm::vec4 pos(0.0f, 0.0f, 50.0f, 50.0f);
+	glm::vec4 uv(0.0f, 0.0f, 1.0f, 1.0f);
+	static Zongine::GLTexture texture = Zongine::ResourceManager::getTexture("Textures/JimmyJump/PNG/CharacterRight_Standing.png");
+	Zongine::Color color;
 
-	for (int i = 0; i < _sprites.size(); i++)
-	{
-		_sprites[i]->draw();
+	color.r = 255;
+	color.g = 255;
+	color.b = 255;
+	color.a = 255;
 
-	}
+
+		_spriteBatch.draw(pos, uv, texture.id, 0.0f, color);
+		_spriteBatch.draw(pos + glm::vec4(100, 0, 0, 0), uv, texture.id, 0.0f, color);
+
+	
+	_spriteBatch.end();
+
+	_spriteBatch.renderBatch();
+
+
 
 	_colorProgram.unUse();
 
