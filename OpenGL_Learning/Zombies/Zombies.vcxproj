@@ -81,11 +81,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Entity.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainGame.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Entity.h" />
     <ClInclude Include="MainGame.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\textureShading.frag" />
+    <None Include="Shaders\textureShading.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Levels\level1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Textures\circle.png" />
+    <Image Include="Textures\glass.png" />
+    <Image Include="Textures\light_bricks.png" />
+    <Image Include="Textures\red_bricks.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

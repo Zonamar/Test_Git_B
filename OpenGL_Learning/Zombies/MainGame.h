@@ -4,6 +4,21 @@
 #include <Zongine/GLSLProgram.h>
 #include <Zongine/Camera2D.h>
 #include <Zongine/InputManager.h>
+#include <Zongine/SpriteBatch.h>
+#include <Zongine/Timing.h>
+
+
+enum GameState {
+			PLAY,
+			EXIT,
+
+
+
+
+			NUM_GAME_STATES
+};
+
+
 
 class MainGame
 {
@@ -29,15 +44,33 @@ private:
 
     /// Renders the game
     void drawGame();
+	
+	// Gets Level Map
+	void getLevel(int LevelNumber);
+
 
     /// Member Variables
     Zongine::Window _window; ///< The game window
     
-
     Zongine::glslProgram _textureProgram; ///< The shader program
 
     Zongine::InputManager _inputManager; ///< Handles input
 
     Zongine::Camera2D _camera; ///< Main Camera
+
+	Zongine::SpriteBatch _spriteBatch;  // Handles Sprite drawing
+
+	Zongine::FpsLimiter _fpsLimiter;  // holds the FPS to a set amount;
+
+	int _screenHeight, _screenWidth;
+
+	float _time;
+
+	float _fps;
+
+	const float MAX_FPS = 60;
+
+	GameState _gameState;
+
 };
 
